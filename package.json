@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "underscore": "^1.13.4",
+        "uview-ui": "^2.0.36",
+        "vue-uuid": "2.1.0"
+    }
+}
