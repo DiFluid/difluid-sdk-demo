@@ -29,6 +29,7 @@ The sum of from frame header to DataN (All the part in data pack excepte the che
 
 ## All DiFluid Devices Protocol
 
-| Model                       | Version | Remark |
-| --------------------------- | ------- | ------ |
-| [R2 Extract](protocolR2.md) | 1.0.0   |        |
+| Model                                   | Version | Remark |
+| --------------------------------------- | ------- | ------ |
+| [R2 Extract](protocolR2.md)             | 1.0.0   |        |
+| [Microbalance](protocolMicrobalance.md) | 1.0.0   |        |
