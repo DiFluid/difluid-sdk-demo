@@ -37,7 +37,7 @@ Then you should get two services available in total:
 If you are familiar with how to make this connection under your framework / environment, then you can just skip this part.
 
 #### **STEP2: Create Server Connection (Optional)**
-~~ DiFluid devices now have the encrypted channel on and the cleartext channel off by default. To enabling the cleartext transmission channel, you need to let device to communicate with difluid server after each power on of the device. ~~
+~~DiFluid devices now have the encrypted channel on and the cleartext channel off by default. To enabling the cleartext transmission channel, you need to let device to communicate with difluid server after each power on of the device.~~
 
 DiFluid devices now have the encrypted channel and cleartext channel both on by default. This step now is an optional step and is only used to making connection to DiFluid Server and enabling OTA function (WIP for third-party usage).
 
