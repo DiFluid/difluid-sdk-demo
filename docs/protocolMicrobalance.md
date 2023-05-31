@@ -60,6 +60,7 @@
 | Respond     | 1    | Device Settings | 4   | Respond Weight Unit                | 1           |                                       |                                                                                                                                                                                                            |
 
 #### *Example:*
+
 - Get Sensor Data Auto Send Flag
   - Cmd: `DF DF 01 00 00  BF`
   - Respond: `DF DF 01 00 01 00 C0`
@@ -95,22 +96,36 @@
 
 ### 3. Device Data & Control
 
+#### How to Tare
 
+Use `Power Button Single Click`(Func = 3, Cmd = 2)
 
-|             | Func | Func Desciption | Cmd | Cmd Description                    | Data Length | Data Description                                                                                                                                                              | Remark                                                                                             |
-| ----------- | ---- | --------------- | --- | ---------------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Control Cmd | 3    | Device Data     | 0   | Get Sensor Data                    | 0           | /                                                                                                                                                                             |                                                                                                    |
-| Respond     | 3    | Device Data     | 0   | Respond Sensor Data                | 12          | See [Sensor Data Details](#sensor-data-details)                                                                                                                               | If set [Auto send](#2-device-settings) On（Func:1 Cmd:0）, the data will be sent automatically.    |
-| Control Cmd | 3    | Device Control  | 1   | Control DLink Button Press         | 1           | 0                                                                                                                                                                             | [Difference: DLink Button Single Click and Press](#difference-dlink-button-single-click-and-press) |
-| Respond     | 3    | Device Control  | 1   | Respond DLink Press Status         | 1           | 0:Respond DLink Button Press<br />1:Device Trigger DLink Button Press                                                                                                         |                                                                                                    |
-| Control Cmd | 3    | Device Control  | 2   | Control Button Single Click        | 1           | 0:Control DLink Button Single Click<br />1:Control Power Button Single Click                                                                                                  |                                                                                                    |
-| Respond     | 3    | Device Control  | 2   | Respond Button Single Click Status | 1           | 0:Respond DLink Button Single Click<br />1:Respond Power Button Single Click<br />2:Device Trigger DLink Button Single Click <br />3:Device Trigger Power Button Single Click |                                                                                                    |
-| Control Cmd | 3    | Device Control  | 3   | Control Button Double Click        | 1           | 0:Control DLink Button Double Click<br />1:Control Power Button Double Click                                                                                                  |                                                                                                    |
-| Respond     | 3    | Device Control  | 3   | Respond Button Double Click Status | 1           | 0:Respond DLink Button Double Click<br />1:Respond Power Button Double Click<br />2:Device Trigger DLink Button Double Click<br />3:Device Trigger Power Button Double Click  |                                                                                                    |
-| Control Cmd | 3    | Device Control  | 4   | Control Button Long Press          | 1           | 0:Control DLink Button Long Press<br />1:Control Power Button Long Press                                                                                                      |                                                                                                    |
-| Respond     | 3    | Device Control  | 4   | Respond Button Long Press Status   | 1           | 0:Respond DLink Button Long Press<br />1:Respond Power Button Long Press<br />2:Device Trigger DLink Button Long Press<br />3:Device Trigger Power Button Long Press          |                                                                                                    |
-| Control Cmd | 3    | Device Control  | 5   | Get Device Status                  | 0           | /                                                                                                                                                                             |                                                                                                    |
-| Respond     | 3    | Device Control  | 5   | Respond Device Status              | 8           | Data0: [Device Status](#- Device Status)<br />Data1: battery power (Range: 0-100)<br />Data2: charge status (1: charging  0:Idle)<br />Data3-7: Reserved                      |                                                                                                    |
+#### How to use the timing function
+
+Start timer ,Use `DLink Button Single Click`(Func = 3, Cmd = 2)
+
+Stop timer ,Use `DLink Button Press` (Func = 3, Cmd = 1)
+
+Exit Stop state , Use `DLink Button Single Click`(Func = 3, Cmd = 2)
+
+#### Difference: DLink Button Single Click and Press
+
+The difference between **single click** and **press** is that **press** is only used when timing needs to be paused, and **single click** is used in other cases.(In future updates, we will fix this difference.)
+
+|             | Func | Func Desciption | Cmd  | Cmd Description                    | Data Length | Data Description                                             | Remark                                                       |
+| ----------- | ---- | --------------- | ---- | ---------------------------------- | ----------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Control Cmd | 3    | Device Data     | 0    | Get Sensor Data                    | 0           | /                                                            |                                                              |
+| Respond     | 3    | Device Data     | 0    | Respond Sensor Data                | 12          | See [Sensor Data Details](#sensor-data-details)              | If set [Auto send](#2-device-settings) On（Func:1 Cmd:0）, the data will be sent automatically. |
+| Control Cmd | 3    | Device Control  | 1    | Control DLink Button Press         | 1           | 0                                                            | [Difference: DLink Button Single Click and Press](#difference-dlink-button-single-click-and-press) |
+| Respond     | 3    | Device Control  | 1    | Respond DLink Press Status         | 1           | 0:Respond DLink Button Press<br />1:Device Trigger DLink Button Press |                                                              |
+| Control Cmd | 3    | Device Control  | 2    | Control Button Single Click        | 1           | 0:Control DLink Button Single Click<br />1:Control Power Button Single Click | Control Timer : Use `DLink Button Single Click`.<br />Tare : Use `Power Button Single Click` |
+| Respond     | 3    | Device Control  | 2    | Respond Button Single Click Status | 1           | 0:Respond DLink Button Single Click<br />1:Respond Power Button Single Click<br />2:Device Trigger DLink Button Single Click <br />3:Device Trigger Power Button Single Click |                                                              |
+| Control Cmd | 3    | Device Control  | 3    | Control Button Double Click        | 1           | 0:Control DLink Button Double Click<br />1:Control Power Button Double Click | Enter the device information page : Use `DLink Button Double Click` .<br />Switch weight units : Use `Power Button Double Click`. |
+| Respond     | 3    | Device Control  | 3    | Respond Button Double Click Status | 1           | 0:Respond DLink Button Double Click<br />1:Respond Power Button Double Click<br />2:Device Trigger DLink Button Double Click<br />3:Device Trigger Power Button Double Click |                                                              |
+| Control Cmd | 3    | Device Control  | 4    | Control Button Long Press          | 1           | 0:Control DLink Button Long Press<br />1:Control Power Button Long Press | Reserved : `DLink Button Long Press`.<br />Shutdown : Use `Power Button Long Press` |
+| Respond     | 3    | Device Control  | 4    | Respond Button Long Press Status   | 1           | 0:Respond DLink Button Long Press<br />1:Respond Power Button Long Press<br />2:Device Trigger DLink Button Long Press<br />3:Device Trigger Power Button Long Press |                                                              |
+| Control Cmd | 3    | Device Control  | 5    | Get Device Status                  | 0           | /                                                            |                                                              |
+| Respond     | 3    | Device Control  | 5    | Respond Device Status              | 8           | Data0: [Device Status](#- Device Status)<br />Data1: battery power (Range: 0-100)<br />Data2: charge status (1: charging  0:Idle)<br />Data3-7: Reserved |                                                              |
 
 #### - Sensor Data Details
 
@@ -132,10 +147,6 @@
 | 5              | Idle                    | 13             | Low Power Mode 2         |
 | 6              | Show Device Information | 14             | Auto Stop Timing Trigger |
 | 7              | Tare in progress        |                |                          |
-
-#### Difference: DLink Button Single Click and Press
-
-The difference between **single click** and **press** is that **press** is only used when timing needs to be paused, and **single click** is used in other cases.(In future updates, we will fix this difference.)
 
 #### *Example:*
 
