@@ -24,7 +24,7 @@
     DF DF 00 00 06 01 33 32 34 31 37 C6
     DF DF 00 00 06 02 42 30 30 30 30 C8
     ```
-  - Complete data pack: `36 38 42 36 42 33 32 34 31 3742 30 30 30 30`
+  - Complete data pack: `36 38 42 36 42 33 32 34 31 37 42 30 30 30 30`
   - Decode to String: `68B6B32417B0000`
 -  Get Device Model
    -  Cmd: `DF DF 00 01 00 BF`
@@ -127,13 +127,11 @@ The difference between **single click** and **press** is that **press** is only 
 | Control Cmd | 3    | Device Control  | 5   | Get Device Status                  | 0           | /                                                                                                                                                                             |                                                                                                                                   |
 | Respond     | 3    | Device Control  | 5   | Respond Device Status              | 8           | Data0: [Device Status](#- Device Status)<br />Data1: battery power (Range: 0-100)<br />Data2: charge status (1: charging  0:Idle)<br />Data3-7: Reserved                      |                                                                                                                                   |
 
-#### - Sensor Data Details
+#### - Sensor Data Details [(Example)](#example-2)
 
-| Data        | Data0-3(weight)                                                                                  | Data4-5(flow rate)                                                                                    | Data6-7(time)                                | Data8-11(device timestamp)                                                                          | Dtat12(weight unit)                |
-| ----------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------- | :--------------------------------- |
-| Description | weight (gram:x10 oz:x1000 gering:x10)                                                            | flow rate (x10)                                                                                       | time                                         | device                                                                                              | weight unit (0:gram 1:oz 2:gering) |
-| Value       |                                                                                                  | 00 48                                                                                                 | 00 03                                        | 00 01 5C 2A                                                                                         | 00                                 |
-| Example     | Data0-3:00 00 00 93<br />0x00000093 = 147<br />Data12: 0 = gram<br />Weight = 147 / 10.0 = 14.7g | Data4-5:00 48<br />0x0048 = 72<br />Flow rate = 72 / 10.0 = 7.2g/s<br />Note: flow rate unit only g/s | Data6-7:00 03<br />0x0003 = 3<br />Time = 3s | Data8-11:00 01 5C 2A<br />Device System Timestamp<br />Note: Indicates the moment when data is sent | Dtat12:00<br />weight unit = gram  |
+| Data        | Data0-3(weight)                       | Data4-5(flow rate) | Data6-7(time) | Data8-11(device timestamp) | Dtat12(weight unit)                |
+| ----------- | ------------------------------------- | ------------------ | ------------- | -------------------------- | :--------------------------------- |
+| Description | weight (gram:x10 oz:x1000 gering:x10) | flow rate (x10)    | time          | device                     | weight unit (0:gram 1:oz 2:gering) |
 
 #### - Device Status
 
@@ -154,11 +152,11 @@ The difference between **single click** and **press** is that **press** is only 
   - Cmd: `DF DF 03 00 00 C1`
   - Respond: `DF DF 03 00 0D 00 00 02 F8 00 00 00 00 00 0A 27 B0 00 A9`
   - Decode to Result: 
-    00 00 02 F8 -> 0x000002F8 = 760 weight : 760 / 10 = 76g
-    00 00 -> 0x0000 = 0 flow rate : 0
-    00 00 -> 0x0000 = 0 count time : 0
-    00 0A 27 B0 -> 0x000A27B0 = 665520 , system tick : 665520 
-    00 -> 0x00 = 0 , weight unit : gram
+    - Data0-3: `00 00 02 F8 -> 0x000002F8 = 760` , weight: 760 / 10 = 76g
+    - Data4-5: `00 00 -> 0x0000 = 0` , flow rate: 0
+    - Data6-7: `00 00 -> 0x0000 = 0` , count time: 0
+    - Data8-11: `00 0A 27 B0 -> 0x000A27B0 = 665520` , system tick: 665520 
+    - Data12: `00 -> 0x00 = 0` , weight unit: gram
 - Control DLink Button Press
   - Cmd: `DF DF 03 01 01 00 C3`
   - Respond: `DF DF 03 01 01 00 C3`
@@ -176,6 +174,6 @@ The difference between **single click** and **press** is that **press** is only 
   - Cmd: `DF DF 03 05 00 C6`
   - Respond: `DF DF 03 05 08 05 64 01 00 00 00 00 00 38`
   - Decode to Result: 
-    Data0: 0x05 = 5 , Device Status: Idle
-    Data1: 0x64 = 100 , Battery Power: 100%
-    Data2: 0x01 = 1 , Charge Status: Charging
+    - Data0: 0x05 = 5 , Device Status: Idle
+    - Data1: 0x64 = 100 , Battery Power: 100%
+    - Data2: 0x01 = 1 , Charge Status: Charging
