@@ -16,8 +16,7 @@ This project is based on vue and implemented uniapp framework for cross-platform
 ### **Get Started**
 0. Install [npm](https://www.npmjs.com/package/npm) and [HbuilderX](https://www.dcloud.io/hbuilderx.html)
 1. run `npm install` under the project directory.
-2. Replace the key in [config.js](/config.js) with yours. (Contact ethan.zhou@digitizefluid.com or at [discord server](https://discord.gg/FWVcRFyDe4) for the internal test key now)
-3. Start HbuilderX:
+2. Start HbuilderX:
    - Import project
    - Run - Mobile App Playground
 
