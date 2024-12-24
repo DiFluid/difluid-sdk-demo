@@ -1,7 +1,30 @@
-# Transmission Protocol - Microbalance
-#### - *Version: 1.0.0*
-#### - *Last Update: May 29th 2023*
-#### - *Least Firmware Version: 3.0.0*
+# Transmission Protocol - Microbalance(Ti)
+# Overview
+
+- *Version: 1.0.0*
+- *Last Update: December 24th, 2024*
+- *Minimum firmware version for Microbalance: V300*
+- *Minimum firmware version for Microbalance Ti: V010*
+
+## Microbalance UUIDs
+
+Broadcast UUID:0000**00EE**-0000-1000-8000-00805F9B34FB
+
+Service UUID:0000**00EE**-0000-1000-8000-00805F9B34FB
+
+**Characteristic value**: AA01
+
+**Please use the characteristic value FF01 channel for communication.**
+
+## Microbalance Ti UUIDs
+
+Broadcast UUID:0000**00DD**-0000-1000-8000-00805F9B34FB
+
+Service UUID:0000**00DD**-0000-1000-8000-00805F9B34FB
+
+**Characteristic value**: AA01
+
+**Please use the characteristic value AA01 channel for communication.**
 
 ## Microbalance Protocol
 
