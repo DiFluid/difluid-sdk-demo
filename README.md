@@ -7,9 +7,11 @@ This is a project demonstrate the usage of SDK protocol on DiFluid serires produ
 Here includes the code for the following devices
 - [R2 Extract (Firmware Version >= V212)](/docs/protocolR2.md)
 - [Microbalance (Firmware Version >= V300)](/docs/protocolMicrobalance.md)
+- [Omni (Firmware Version >= V016)](/docs/protocolOmni.md)
 
 And these are the ones still WIP
 - Omni
+- Omix
 
 This project is based on vue and implemented uniapp framework for cross-platform.
 
